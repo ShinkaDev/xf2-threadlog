@@ -1,1 +1,1 @@
-"# [Shinka] Thread Log" 
+# [Shinka] Thread Log
