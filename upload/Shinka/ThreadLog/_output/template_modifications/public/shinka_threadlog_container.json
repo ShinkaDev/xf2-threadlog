@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Adds tabbed container to profile page.",
+    "execution_order": 11,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:after_recent_content]-->",
+    "replace": "<xf:if is=\"true\">\n\t<li data-href=\"{{ link('members/thread-log', $user) }}\" role=\"tabpanel\" aria-labelledby=\"thread-log\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n$0"
+}

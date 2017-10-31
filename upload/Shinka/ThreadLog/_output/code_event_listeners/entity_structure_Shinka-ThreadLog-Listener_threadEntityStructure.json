@@ -1,0 +1,9 @@
+{
+    "event_id": "entity_structure",
+    "execute_order": 10,
+    "callback_class": "Shinka\\ThreadLog\\Listener",
+    "callback_method": "threadEntityStructure",
+    "active": true,
+    "hint": "XF\\Entity\\Thread",
+    "description": "Extends Thread entity structure to manage relationship with ThreadLog entity."
+}
