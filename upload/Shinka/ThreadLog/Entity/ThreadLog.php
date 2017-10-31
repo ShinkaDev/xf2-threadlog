@@ -18,7 +18,7 @@ class ThreadLog extends \XF\Mvc\Entity\Entity
         ];
         $structure->getters = [];
         $structure->relations = [
-            'Threads' => [
+            'Thread' => [
                 'entity' => 'XF:Thread',
                 'type' => self::TO_ONE,
                 'conditions' => 'thread_id',
