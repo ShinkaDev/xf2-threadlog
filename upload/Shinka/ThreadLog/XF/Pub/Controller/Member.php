@@ -11,8 +11,11 @@ class Member extends XFCP_Member
         $user = $this->assertViewableUser($params->user_id);
 
         $page = $this->filterPage($params->page);
-        $perPage = $this->options()->threadsPerPage;
-		$threadLogRepo = $this->repository('Shinka\ThreadLog:ThreadLog');
+        $perPage = $this->options()->discussionsPerPage;
+
+        /** @var \Shinka\ThreadLog\Repository\ThreadLog $repo */
+		$repo = $this->repository('Shinka\ThreadLog:ThreadLog');
+        $finder = $repo->findThreadLogsForMemberView();
 
         $viewParams = [
             'user' => $user
