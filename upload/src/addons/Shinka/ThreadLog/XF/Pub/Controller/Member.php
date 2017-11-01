@@ -48,6 +48,7 @@ class Member extends XFCP_Member
             'page' => $page,
             'perPage' => $perPage,
             'total' => $finder->total(),
+            'checked' => $this->filter('threadlog', 'str')
         ];
 
         return $this->view('Shinka\ThreadLog:View', 'shinka_threadlog_member_threadlog', $viewParams);

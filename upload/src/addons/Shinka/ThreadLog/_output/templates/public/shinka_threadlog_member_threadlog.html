@@ -4,7 +4,7 @@
 <xf:js src="shinka/threadlog/threadlog.js" />
 
 
-<div class="block">
+<div id="ShinkaThreadLogBlock" class="block">
     <div class="block-outer">
         <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
                     data="{$user}"
@@ -18,27 +18,31 @@
                 <form id="ShinkaThreadLogFilters" method="POST"
                       action="{{ link('members/thread-log', $user) }}"
                       data-xf-init="ajax-submit"
-                      data-replace="#ShinkaThreadLog">
+                      data-replace="#ShinkaThreadLogBlock">
                     <label for="threadlog_all" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="all" id="threadlog_all" class="filterToggle-radio" checked />
+                        <input type="radio" name="threadlog" value="all" id="threadlog_all" class="filterToggle-radio"
+                            {{ ($checked == 'all' || !$checked) ? 'checked' : null }}/>
                         <span class="threadlogFilterBar-filterToggle">
                             All
                         </span>
                     </label>
                     <label for="threadlog_active" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="active" id="threadlog_active" class="filterToggle-radio" />
+                        <input type="radio" name="threadlog" value="active" id="threadlog_active" class="filterToggle-radio"
+                               {{ $checked == 'active' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
                             Active
                         </span>
                     </label>
                     <label for="threadlog_need_replies" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="need_replies" id="threadlog_need_replies" class="filterToggle-radio" />
+                        <input type="radio" name="threadlog" value="need_replies" id="threadlog_need_replies" class="filterToggle-radio"
+                               {{ $checked == 'need_replies' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
                             Need Replies
                         </span>
                     </label>
                     <label for="threadlog_locked" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="locked" id="threadlog_locked" class="filterToggle-radio" />
+                        <input type="radio" name="threadlog" value="locked" id="threadlog_locked" class="filterToggle-radio"
+                               {{ $checked == 'locked' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
                             Locked
                         </span>
