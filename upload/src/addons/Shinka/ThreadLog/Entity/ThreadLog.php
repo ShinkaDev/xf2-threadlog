@@ -2,9 +2,10 @@
 
 namespace Shinka\ThreadLog\Entity;
 
+use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
-class ThreadLog extends \XF\Mvc\Entity\Entity
+class ThreadLog extends Entity
 {
     public static function getStructure(Structure $structure)
     {

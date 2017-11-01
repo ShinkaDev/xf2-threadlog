@@ -2,26 +2,40 @@
 
 namespace Shinka\ThreadLog;
 
-use XF\Db\Schema\Create;
+use XF\AddOn\AbstractSetup;
+use XF\Db\Schema\Alter;
 
 class Setup extends AbstractSetup
 {
     use \XF\AddOn\StepRunnerInstallTrait;
+    use \XF\AddOn\StepRunnerUpgradeTrait;
     use \XF\AddOn\StepRunnerUninstallTrait;
 
+    private $COLUMN_NAME = 'shinka_thread_log';
+
+    /**
+     * Adds column to forum table to include forum in thread log
+     *
+     * @param array $stepParams
+     */
 	public function install(array $stepParams = [])
 	{
-        $this->schemaManager()->createTable('xf_shinka_thread_log', function(Create $table)
+        $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
         {
-            $table->addColumn('thread_id', 'int');
-            $table->addColumn('user_id', 'int');
-            $table->addColumn('position', 'int');
-            $table->addPrimaryKey(['thread_id', 'user_id']);
+            $table->addColumn($this->COLUMN_NAME, 'tinyint')->setDefault(0);
         });
 	}
 
+    /**
+     * Drops column on forum table
+     *
+     * @param array $stepParams
+     */
 	public function uninstall(array $stepParams = [])
 	{
-        $this->schemaManager()->dropTable('xf_shinka_thread_log`');
+        $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
+        {
+            $table->dropColumns($this->COLUMN_NAME);
+        });
 	}
 }
