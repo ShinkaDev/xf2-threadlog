@@ -1,8 +1,6 @@
 <xf:title>{$user.username} Thread Log</xf:title>
 
 <xf:css src="shinka_threadlog.less" />
-<xf:js src="shinka/threadlog/threadlog.js" />
-
 
 <div id="ShinkaThreadLogBlock" class="block">
     <div class="block-outer">
@@ -23,28 +21,28 @@
                         <input type="radio" name="threadlog" value="all" id="threadlog_all" class="filterToggle-radio"
                             {{ ($checked == 'all' || !$checked) ? 'checked' : null }}/>
                         <span class="threadlogFilterBar-filterToggle">
-                            All
+                            {{ phrase('all') }}
                         </span>
                     </label>
                     <label for="threadlog_active" data-xf-click="submit">
                         <input type="radio" name="threadlog" value="active" id="threadlog_active" class="filterToggle-radio"
                                {{ $checked == 'active' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
-                            Active
+                            {{ phrase('open') }}
                         </span>
                     </label>
                     <label for="threadlog_need_replies" data-xf-click="submit">
                         <input type="radio" name="threadlog" value="need_replies" id="threadlog_need_replies" class="filterToggle-radio"
                                {{ $checked == 'need_replies' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
-                            Need Replies
+                            {{ phrase('shinka_thread_log_need_reply') }}
                         </span>
                     </label>
                     <label for="threadlog_locked" data-xf-click="submit">
                         <input type="radio" name="threadlog" value="locked" id="threadlog_locked" class="filterToggle-radio"
                                {{ $checked == 'locked' ? 'checked' : null }} />
                         <span class="threadlogFilterBar-filterToggle">
-                            Locked
+                            {{ phrase('locked') }}
                         </span>
                     </label>
                     <input type="hidden" name="_xfToken" value="{{ csrf_token() }}" />
@@ -62,8 +60,8 @@
                         </xf:foreach>
                     </div>
                 <xf:else />
-                    <div class="structItem js-emptyThreadList">
-                        <div class="structItem-cell">{{ phrase('there_no_threads_matching_your_filters') }}</div>
+                    <div class="block-row block-row--separated">
+                        {{ phrase('there_no_threads_matching_your_filters') }}
                     </div>
                 </xf:if>
             </div>

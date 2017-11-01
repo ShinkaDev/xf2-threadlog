@@ -1,9 +1,0 @@
-{
-    "template": "member_view",
-    "description": "Adds a tab to the profile page.",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "<!--[XF:tabs:end]-->",
-    "replace": "<a href=\"{{ link('members/thread-log', $user) }}\"\n   class=\"tabs-tab\"\n   id=\"thread-log\"\n   role=\"tab\">{{ phrase('shinka_thread_log') }}</a>\n$0"
-}

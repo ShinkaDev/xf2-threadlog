@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<!--[XF:tab_panes:end]-->",
-    "replace": "<xf:if is=\"{{ $user.hasPermission('shinkaThreadLog', 'threadLog') }}\">\n\t<li data-href=\"{{ link('members/thread-log', $user) }}\" role=\"tabpanel\" aria-labelledby=\"thread-log\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n$0"
+    "replace": "<xf:if is=\"{{ $user.hasPermission('shinkaThreadLog', 'threadLog') AND\n\t\t   \t  ($xf.visitor.hasPermission('shinkaThreadLog', 'viewAnyThreadLog') OR \n\t\t   \t    ($xf.visitor.user_id == $user.user_id AND\n\t\t          $user.hasPermission('shinkaThreadLog', 'viewOwnThreadLog')))}}\">\n\t<li data-href=\"{{ link('members/thread-log', $user) }}\" role=\"tabpanel\" aria-labelledby=\"thread-log\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n$0"
 }

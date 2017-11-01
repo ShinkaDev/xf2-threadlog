@@ -40,5 +40,11 @@
         "version_id": 1000000,
         "version_string": "1.0.0",
         "hash": "8ee747f563579c46811b2d2f575dfc92"
+    },
+    "shinka_thread_log_need_reply.txt": {
+        "global_cache": false,
+        "version_id": 1000020,
+        "version_string": "1.0.0 Beta",
+        "hash": "0f6d96f2d1463bc3d0fbc1d24629c452"
     }
 }
