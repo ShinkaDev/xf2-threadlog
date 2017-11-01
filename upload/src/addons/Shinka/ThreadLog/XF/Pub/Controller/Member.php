@@ -29,7 +29,8 @@ class Member extends XFCP_Member
         /** @var \XF\Repository\Thread $repo */
 		$repo = $this->repository('XF:Thread');
         /** @var \XF\Finder\Thread $finder */
-        $finder = $repo->findThreadsWithPostsByUser($user['user_id']);
+        $finder = $repo->findThreadsWithPostsByUser($user['user_id'])
+                       ->where('Forum.shinka_thread_log', true);
 
         $this->filterThreadLog($finder, $filters);
         $total = $finder->total();
