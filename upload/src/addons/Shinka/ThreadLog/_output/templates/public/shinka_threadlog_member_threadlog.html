@@ -50,16 +50,18 @@
         </div>
 
         <div class="block-body">
-            <div class="structItemContainer">
+            <div id="ShinkaThreadLog" class="structItemContainer">
                 <xf:if is="$threads is not empty">
-                    <div id="ShinkaThreadLog" class="structItemContainer-group js-threadList">
+                    <div class="structItemContainer-group js-threadList">
                         <xf:foreach loop="$threads" value="$thread">
                                 <xf:macro template="thread_list_macros" name="item" arg-thread="{$thread}" arg-forum="{$thread.forum}"
                                 wrapperclass="testing-testing"/>
                         </xf:foreach>
                     </div>
                 <xf:else />
-                        <div id="ShinkaThreadLog" class="blockMessage">{{ $user.username }}</div>
+                    <div class="structItem js-emptyThreadList">
+                        <div class="structItem-cell">{{ phrase('there_no_threads_matching_your_filters') }}</div>
+                    </div>
                 </xf:if>
             </div>
         </div>

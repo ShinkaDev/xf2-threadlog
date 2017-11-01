@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Adds Thread Log tab to profile page.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<xf:if is=\"{{ $user.hasPermission('shinkaThreadLog', 'threadLog') }}\">\n\t<a href=\"{{ link('members/thread-log', $user) }}\"\n\t   class=\"tabs-tab\"\n\t   role=\"tab\"\n\t   aria-controls=\"thread-log\">{{ phrase('shinka_thread_log') }}</a>\n</xf:if>\n$0"
+}

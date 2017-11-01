@@ -1,4 +1,10 @@
 {
+    "public/shinka_thread_log_member_view_tab.json": {
+        "hash": "f657b81cc37068fa3048b96764701a98"
+    },
+    "public/shinka_thread_log_member_view_tab_pane.json": {
+        "hash": "3cc24550e60304758c29d579c42e2c0d"
+    },
     "public/shinka_threadlog_container.json": {
         "hash": "78517b5ad955b989c6209867d143f541"
     },

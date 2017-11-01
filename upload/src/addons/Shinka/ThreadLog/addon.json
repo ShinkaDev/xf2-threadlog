@@ -1,13 +1,12 @@
 {
-    "legacy_addon_id": "shinka_threadlog",
     "title": "[Shinka] Thread Log",
     "description": "",
     "version_id": 1000000,
     "version_string": "1.0.0",
-    "dev": "",
-    "dev_url": "",
-    "faq_url": "",
-    "support_url": "",
+    "dev": "K. Robinson",
+    "dev_url": "https://github.com/kalynrobinson",
+    "faq_url": "https://github.com/kalynrobinson/xf2_threadlog",
+    "support_url": "https://github.com/kalynrobinson/xf2_threadlog/issues",
     "extra_urls": [],
     "require": [],
     "icon": ""

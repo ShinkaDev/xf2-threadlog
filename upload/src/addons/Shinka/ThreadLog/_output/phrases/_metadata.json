@@ -1,0 +1,32 @@
+{
+    "permission.shinkaThreadLog_threadLog.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "354bc9a0bd72f847c1e31a3f44339904"
+    },
+    "permission.shinkaThreadLog_viewAnyThreadLog.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "ed5e7f799e5c9f2f24ca4a81d933eea3"
+    },
+    "permission.shinkaThreadLog_viewOwnThreadLog.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "13b2df37cf7f76dddceb24b4fe93bd2c"
+    },
+    "permission_interface.shinkaThreadLogModeratorPermissions.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "5aa8cd9a2df753701e36191928d51ef8"
+    },
+    "shinka_thread_log.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "ca2c3d2c6817aa6993cd92ee5cd70b18"
+    }
+}

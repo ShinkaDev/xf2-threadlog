@@ -1,13 +1,26 @@
 <?php
-
+/**
+ * Manages ThreadLog action, fetching inputs, and filtering the Thread finder
+ *
+ * @author K. Robinson
+ *
+ */
 namespace Shinka\ThreadLog\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 
 class Member extends XFCP_Member
 {
+    /**
+     * Fetches all threads with posts by user, limits by page, filters by `discussion_open` and/or the last
+     * poster, and returns the corresponding view.
+     *
+     * @param ParameterBag $params Contains user ID and may contain page number
+     * @return \XF\Mvc\Reply\View ThreadLog container view with view parameters
+     */
     public function actionThreadLog(ParameterBag $params)
     {
+        // Throws exception if user does not exist or visitor does not have permission to view user
         $user = $this->assertViewableUser($params->user_id);
 
         $page = $this->filterPage($params->page) ?: 1;
@@ -19,7 +32,7 @@ class Member extends XFCP_Member
         /** @var \XF\Finder\Thread $finder */
         $finder = $repo->findThreadsWithPostsByUser($user['user_id']);
 
-        $this->filterThreadLog($finder, $filters, $page, $perPage);
+        $this->filterThreadLog($finder, $filters);
         $total = $finder->total();
         $finder->limitByPage($page, $perPage);
 
@@ -29,7 +42,6 @@ class Member extends XFCP_Member
             'page' => $page,
             'perPage' => $perPage,
             'total' => $total,
-            'filters' => $filters
         ];
 
         return $this->view('Shinka\ThreadLog:View', 'shinka_threadlog_member_threadlog', $viewParams);

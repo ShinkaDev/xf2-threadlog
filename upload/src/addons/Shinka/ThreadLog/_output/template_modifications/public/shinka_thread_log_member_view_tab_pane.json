@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Adds Thread Log tab pane to profile page.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:if is=\"{{ $user.hasPermission('shinkaThreadLog', 'threadLog') }}\">\n\t<li data-href=\"{{ link('members/thread-log', $user) }}\" role=\"tabpanel\" aria-labelledby=\"thread-log\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n$0"
+}
