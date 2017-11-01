@@ -5,13 +5,16 @@ namespace Shinka\ThreadLog;
 use XF\AddOn\AbstractSetup;
 use XF\Db\Schema\Alter;
 
+/**
+ * Manages installing, upgrading, and uninstalling add-on
+ *
+ * @package Shinka\ThreadLog
+ */
 class Setup extends AbstractSetup
 {
     use \XF\AddOn\StepRunnerInstallTrait;
     use \XF\AddOn\StepRunnerUpgradeTrait;
     use \XF\AddOn\StepRunnerUninstallTrait;
-
-    private $COLUMN_NAME = 'shinka_thread_log';
 
     /**
      * Adds column to forum table to include forum in thread log
@@ -22,7 +25,7 @@ class Setup extends AbstractSetup
 	{
         $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
         {
-            $table->addColumn($this->COLUMN_NAME, 'tinyint')->setDefault(0);
+            $table->addColumn('shinka_thread_log', 'tinyint')->setDefault(0);
         });
 	}
 
@@ -35,7 +38,7 @@ class Setup extends AbstractSetup
 	{
         $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
         {
-            $table->dropColumns($this->COLUMN_NAME);
+            $table->dropColumns('shinka_thread_log');
         });
 	}
 }

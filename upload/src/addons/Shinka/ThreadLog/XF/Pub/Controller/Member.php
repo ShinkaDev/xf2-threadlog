@@ -1,14 +1,13 @@
 <?php
-/**
- * Manages ThreadLog action, fetching inputs, and filtering the Thread finder
- *
- * @author K. Robinson
- *
- */
 namespace Shinka\ThreadLog\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 
+/**
+ * Manages ThreadLog action, fetching inputs, and filtering the Thread finder
+ *
+ * @package Shinka\ThreadLog\XF\Pub\Controller
+ */
 class Member extends XFCP_Member
 {
     /**

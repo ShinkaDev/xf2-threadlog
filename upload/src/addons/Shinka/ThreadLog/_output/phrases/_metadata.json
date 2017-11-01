@@ -28,5 +28,17 @@
         "version_id": 1000000,
         "version_string": "1.0.0",
         "hash": "ca2c3d2c6817aa6993cd92ee5cd70b18"
+    },
+    "shinka_thread_log_if_selected.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "d8f2981903d4b1e65932d55a8f52c24c"
+    },
+    "shinka_thread_log_include_threads_in_thread_log.txt": {
+        "global_cache": false,
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "8ee747f563579c46811b2d2f575dfc92"
     }
 }

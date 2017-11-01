@@ -1,0 +1,9 @@
+{
+    "template": "forum_edit",
+    "description": "Adds Thread Log option to forum edit page.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</xf:checkboxrow>",
+    "replace": "<xf:option name=\"shinka_thread_log\" selected=\"$forum.shinka_thread_log\"\n    label=\"{{ phrase('shinka_thread_log_include_threads_in_thread_log') }}\"\n    hint=\"{{ phrase('shinka_thread_log_if_selected') }}\" />\n$0"
+}

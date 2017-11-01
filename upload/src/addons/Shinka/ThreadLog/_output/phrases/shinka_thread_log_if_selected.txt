@@ -1,0 +1,1 @@
+If enabled, threads from forum will appear in thread logs.s
