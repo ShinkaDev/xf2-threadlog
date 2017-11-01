@@ -1,6 +1,7 @@
 <?php
 namespace Shinka\ThreadLog\XF\Pub\Controller;
 
+use XF\Entity\Thread;
 use XF\Mvc\ParameterBag;
 
 /**
@@ -33,15 +34,20 @@ class Member extends XFCP_Member
                        ->where('Forum.shinka_thread_log', true);
 
         $this->filterThreadLog($finder, $filters);
-        $total = $finder->total();
-        $finder->limitByPage($page, $perPage);
+        $finder->limitByPage($page, $perPage, $perPage * 2);
+        $threads = $finder->fetch()
+            ->filter(function(Thread $thread)
+            {
+                return $thread->canView();
+            })
+            ->slice(0, $perPage, true);
 
         $viewParams = [
             'user' => $user,
-            'threads' => $finder->fetch(),
+            'threads' => $threads,
             'page' => $page,
             'perPage' => $perPage,
-            'total' => $total,
+            'total' => $finder->total(),
         ];
 
         return $this->view('Shinka\ThreadLog:View', 'shinka_threadlog_member_threadlog', $viewParams);
