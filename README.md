@@ -24,3 +24,6 @@ View a user's active threads, closed threads, and threads in need of reply on th
 ```
 > php cmd.php xf-dev:import --addon Shinka/ThreadLog
 ```
+
+# Credits
+* amwells' original [Threadlog plugin for MyBB](https://github.com/amwelles/mybb-threadlog)
