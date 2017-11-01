@@ -1,4 +1,5 @@
 <?php
+
 namespace Shinka\ThreadLog\XF\Pub\Controller;
 
 use XF\Entity\Thread;
@@ -20,27 +21,15 @@ class Member extends XFCP_Member
      */
     public function actionThreadLog(ParameterBag $params)
     {
-        // Throws exception if user does not exist or visitor does not have permission to view user
         $user = $this->assertViewableUser($params->user_id);
-
         $page = $this->filterPage($params->page) ?: 1;
         $perPage = $this->options()->discussionsPerPage;
-        $filters = $this->getThreadLogFilterInput($user['user_id']);
 
         /** @var \XF\Repository\Thread $repo */
 		$repo = $this->repository('XF:Thread');
         /** @var \XF\Finder\Thread $finder */
-        $finder = $repo->findThreadsWithPostsByUser($user['user_id'])
-                       ->where('Forum.shinka_thread_log', true);
-
-        $this->filterThreadLog($finder, $filters);
-        $finder->limitByPage($page, $perPage, $perPage * 2);
-        $threads = $finder->fetch()
-            ->filter(function(Thread $thread)
-            {
-                return $thread->canView();
-            })
-            ->slice(0, $perPage, true);
+        $finder = $repo->findThreadsWithPostsByUser($user['user_id']);
+        $threads = $this->filterThreads($finder, $user['user_id'], $page, $perPage);
 
         $viewParams = [
             'user' => $user,
@@ -54,6 +43,36 @@ class Member extends XFCP_Member
         return $this->view('Shinka\ThreadLog:View', 'shinka_threadlog_member_threadlog', $viewParams);
     }
 
+    /**
+     * From the initial `findThreadsWithPostsByUser` finder, filter out threads from forums that are not included
+     * in the thread log, apply user filter, and limit by page.
+     *
+     * @param $finder \XF\Finder\Thread Threads that the given user has participated in
+     * @param $filters []      Array of filters to apply. Each filter is an array of three args.
+     * @param $page    integer
+     * @param $perPage integer
+     */
+    private function filterThreads(\XF\Finder\Thread $finder, $user_id, $page, $perPage)
+    {
+        $filters = $this->getThreadLogFilterInput($user_id);
+
+        $finder->where('Forum.shinka_thread_log', true);
+        $this->applyFilters($finder, $filters);
+        $finder->limitByPage($page, $perPage, $perPage * 2);
+        $threads = $finder->fetch()
+            ->filter(function(Thread $thread)
+            {
+                return $thread->canView();
+            })
+            ->slice(0, $perPage, true);
+
+        return $threads;
+    }
+
+    /**
+     * @param $user_id
+     * @return array
+     */
     public function getThreadLogFilterInput($user_id)
     {
         $filters = [];
@@ -77,7 +96,7 @@ class Member extends XFCP_Member
     /**
      * @param \XF\Finder\Thread $finder
      */
-    public function filterThreadLog($finder, $filters)
+    public function applyFilters($finder, $filters)
     {
         foreach ($filters as $filter)
         {

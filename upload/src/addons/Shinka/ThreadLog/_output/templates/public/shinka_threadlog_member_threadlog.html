@@ -11,63 +11,72 @@
     </div>
 
     <div class="block-container">
-        <div class="block-filterBar threadlog-threadlogFilterBar">
-            <div class="threadlogFilterBar">
-                <form id="ShinkaThreadLogFilters" method="POST"
-                      action="{{ link('members/thread-log', $user) }}"
-                      data-xf-init="ajax-submit"
-                      data-replace="#ShinkaThreadLogBlock">
-                    <label for="threadlog_all" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="all" id="threadlog_all" class="filterToggle-radio"
-                            {{ ($checked == 'all' || !$checked) ? 'checked' : null }}/>
-                        <span class="threadlogFilterBar-filterToggle">
-                            {{ phrase('all') }}
-                        </span>
-                    </label>
-                    <label for="threadlog_active" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="active" id="threadlog_active" class="filterToggle-radio"
-                               {{ $checked == 'active' ? 'checked' : null }} />
-                        <span class="threadlogFilterBar-filterToggle">
-                            {{ phrase('open') }}
-                        </span>
-                    </label>
-                    <label for="threadlog_need_replies" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="need_replies" id="threadlog_need_replies" class="filterToggle-radio"
-                               {{ $checked == 'need_replies' ? 'checked' : null }} />
-                        <span class="threadlogFilterBar-filterToggle">
-                            {{ phrase('shinka_thread_log_need_reply') }}
-                        </span>
-                    </label>
-                    <label for="threadlog_locked" data-xf-click="submit">
-                        <input type="radio" name="threadlog" value="locked" id="threadlog_locked" class="filterToggle-radio"
-                               {{ $checked == 'locked' ? 'checked' : null }} />
-                        <span class="threadlogFilterBar-filterToggle">
-                            {{ phrase('locked') }}
-                        </span>
-                    </label>
-                    <input type="hidden" name="_xfToken" value="{{ csrf_token() }}" />
-                </form>
+        <xf:if is="$threads is not empty OR $checked">
+            <div class="block-filterBar threadlog-threadlogFilterBar">
+                <div class="threadlogFilterBar">
+                    <form id="ShinkaThreadLogFilters" method="POST"
+                          action="{{ link('members/thread-log', $user) }}"
+                          data-xf-init="ajax-submit"
+                          data-replace="#ShinkaThreadLogBlock">
+                        <label for="threadlog_all" data-xf-click="submit">
+                            <input type="radio" name="threadlog" value="all" id="threadlog_all" class="filterToggle-radio"
+                                {{ ($checked == 'all' || !$checked) ? 'checked' : null }}/>
+                            <span class="threadlogFilterBar-filterToggle">
+                                {{ phrase('all') }}
+                            </span>
+                        </label>
+                        <label for="threadlog_active" data-xf-click="submit">
+                            <input type="radio" name="threadlog" value="active" id="threadlog_active" class="filterToggle-radio"
+                                   {{ $checked == 'active' ? 'checked' : null }} />
+                            <span class="threadlogFilterBar-filterToggle">
+                                {{ phrase('open') }}
+                            </span>
+                        </label>
+                        <label for="threadlog_need_replies" data-xf-click="submit">
+                            <input type="radio" name="threadlog" value="need_replies" id="threadlog_need_replies" class="filterToggle-radio"
+                                   {{ $checked == 'need_replies' ? 'checked' : null }} />
+                            <span class="threadlogFilterBar-filterToggle">
+                                {{ phrase('shinka_thread_log_need_reply') }}
+                            </span>
+                        </label>
+                        <label for="threadlog_locked" data-xf-click="submit">
+                            <input type="radio" name="threadlog" value="locked" id="threadlog_locked" class="filterToggle-radio"
+                                   {{ $checked == 'locked' ? 'checked' : null }} />
+                            <span class="threadlogFilterBar-filterToggle">
+                                {{ phrase('locked') }}
+                            </span>
+                        </label>
+                        <input type="hidden" name="_xfToken" value="{{ csrf_token() }}" />
+                    </form>
+                </div>
             </div>
-        </div>
+        </xf:if>
 
         <div class="block-body">
             <div id="ShinkaThreadLog" class="structItemContainer">
                 <xf:if is="$threads is not empty">
                     <div class="structItemContainer-group js-threadList">
                         <xf:foreach loop="$threads" value="$thread">
-                                <xf:macro template="thread_list_macros" name="item" arg-thread="{$thread}" arg-forum="{$thread.forum}"
-                                wrapperclass="testing-testing"/>
+                                <xf:macro template="thread_list_macros"
+                                          name="item"
+                                          wrapperclass="testing-testing"
+                                          arg-thread="{$thread}"
+                                          arg-forum="{$thread.forum}"
+                                          arg-allowInlineMod="{{ false }}" />
                         </xf:foreach>
                     </div>
                 <xf:else />
                     <div class="block-row block-row--separated">
-                        {{ phrase('there_no_threads_matching_your_filters') }}
+                        <xf:if is="$checked">
+                            {{ phrase('there_no_threads_matching_your_filters') }}
+                        <xf:else />
+                            {{ phrase('there_no_threads_to_display') }}
+                        </xf:if>
                     </div>
                 </xf:if>
             </div>
         </div>
     </div>
-
 
     <div class="block-outer block-outer--after">
         <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
