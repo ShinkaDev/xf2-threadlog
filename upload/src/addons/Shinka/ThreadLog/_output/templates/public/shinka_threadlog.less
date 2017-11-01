@@ -1,0 +1,34 @@
+.threadlog-threadlogFilterBar
+{
+  padding: @xf-blockPaddingV @xf-blockPaddingH;
+  text-align: right;
+  .xf-blockFilterBar();
+
+  .filterToggle-radio {
+    display: none;
+  }
+
+  .filterToggle-radio:checked + .threadlogFilterBar-filterToggle, .threadlogFilterBar-filterToggle:hover
+  {
+    text-decoration: none;
+    background: mix(
+            xf-default(@xf-blockFilterBar--color, @xf-linkColor),
+            xf-default(@xf-blockFilterBar--background-color, transparent),
+            16%
+    );
+    cursor: pointer;
+  }
+
+  .threadlogFilterBar-filterToggle
+  {
+    white-space: nowrap;
+    border-radius: @xf-borderRadiusMedium;
+    text-decoration: none;
+    padding: 1px  5px;
+  }
+
+  .threadlogFilterBar-menuTrigger
+  {
+    margin-right: -5px;
+  }
+}

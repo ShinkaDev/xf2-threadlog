@@ -13,7 +13,7 @@ class Listener
         $structure->relations['ThreadLog'] = [
             'entity' => 'Shinka\ThreadLog:ThreadLog',
             'type' => Entity::TO_ONE,
-            'conditions' => 'thread_id',
+            'conditions' => ['thread_id', 'user_id'],
             'primary' => true
         ];
     }

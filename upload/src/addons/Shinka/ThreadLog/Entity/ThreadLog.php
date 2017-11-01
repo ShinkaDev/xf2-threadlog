@@ -22,7 +22,7 @@ class ThreadLog extends \XF\Mvc\Entity\Entity
                 'entity' => 'XF:Thread',
                 'type' => self::TO_ONE,
                 'conditions' => 'thread_id',
-                'primary' => true
+                'primary' => false
             ],
         ];
 

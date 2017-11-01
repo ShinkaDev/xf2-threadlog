@@ -1,0 +1,12 @@
+{
+    "public/shinka_threadlog.less": {
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "aef4201e9c19976a51505428b93af681"
+    },
+    "public/shinka_threadlog_member_threadlog.html": {
+        "version_id": 1000000,
+        "version_string": "1.0.0",
+        "hash": "1b0aa1f98395d7dce1d4cfca7281d088"
+    }
+}
