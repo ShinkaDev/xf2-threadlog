@@ -12,7 +12,13 @@ View a user's active threads, closed threads, and threads in need of reply on th
 * Permissions for whether a user group has a thread log, can view their own thread log, and can view other thread logs.
 
 ## Features
-* AJAX
+* AJAX filtering
+* Works out of the box with [[Shinka] AJAX Paging](https://github.com/kalynrobinson/xf2_ajax_paging)
+
+![Thread log](https://github.com/kalynrobinson/xf2_threadlog/raw/master/docs/images/threadlog.png "Thread log")
+
+## Tip Jar
+* Like my plugins and have some extra coffee money? [Throw it my way!](https://www.paypal.me/shinkacodes/5)
 
 ## Development
 * Clone or fork the repository
