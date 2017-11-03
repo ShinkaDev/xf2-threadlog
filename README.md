@@ -15,7 +15,7 @@ View a user's active threads, closed threads, and threads in need of reply on th
 * AJAX filtering
 * Works out of the box with [[Shinka] AJAX Paging](https://github.com/kalynrobinson/xf2_ajax_paging)
 
-![Thread log](https://github.com/kalynrobinson/xf2_threadlog/raw/master/docs/images/threadlog.png "Thread log")
+![](https://github.com/kalynrobinson/xf2_threadlog/blob/master/docs/images/threadlog.PNG)
 
 ## Tip Jar
 * Like my plugins and have some extra coffee money? [Throw it my way!](https://www.paypal.me/shinkacodes/5)
