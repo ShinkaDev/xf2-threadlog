@@ -7,6 +7,7 @@
         <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
                     data="{$user}"
                     link="members/thread-log"
+                    params="{{ $filters ? $filters + {'ajax': true} : {'ajax': true} }}"
                     wrapperclass="block-outer-main" />
     </div>
 
