@@ -80,7 +80,7 @@
     <div class="block-outer block-outer--after">
         <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
                     data="{$user}"
-                    params="{$filters}"
+                    params="{{ $filters ? $filters + {'ajax': true} : {'ajax': true} }}"
                     link="{{ link('members/thread-log', $user) }}"
                     wrapperclass="block-outer-main" />
     </div>
