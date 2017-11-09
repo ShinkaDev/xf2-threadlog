@@ -1,7 +1,7 @@
 {
-    "legacy_addon_id": "View a user's active threads, closed threads, and threads in need of reply on their profile page.",
+    "legacy_addon_id": "",
     "title": "[Shinka] Thread Log",
-    "description": "",
+    "description": "View a user's active threads, closed threads, and threads in need of reply on their profile page.",
     "version_id": 10000032,
     "version_string": "1.0.0-beta2",
     "dev": "K. Robinson",
